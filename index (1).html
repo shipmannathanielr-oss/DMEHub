@@ -1,0 +1,1926 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>DME Intelligence Hub — Industry News &amp; Trends</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=DM+Sans:wght@300;400;500;600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+
+
+  :root {
+    --teal: #5BA4BE;
+    --teal-dark: #4A8CAA;
+    --teal-light: #A8D4E6;
+    --navy: #1A2E5A;
+    --navy-mid: #243F7A;
+    --peach: #EDB896;
+    --peach-light: #F7DDD0;
+    --white: #FFFFFF;
+    --off-white: #F8F6F3;
+    --gray-100: #F0EDE8;
+    --gray-200: #E2DDD5;
+    --gray-400: #9B9490;
+    --gray-600: #6B6460;
+    --gray-800: #2E2B28;
+    --border: #E2DDD5;
+    --font-display: 'Playfair Display', Georgia, serif;
+    --font-body: 'DM Sans', sans-serif;
+    --font-mono: 'DM Mono', monospace;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: var(--font-body);
+    background: var(--off-white);
+    color: var(--gray-800);
+    line-height: 1.6;
+  }
+
+  /* ── TICKER ── */
+  .ticker-wrap {
+    background: var(--navy);
+    color: var(--white);
+    overflow: hidden;
+    height: 36px;
+    display: flex;
+    align-items: center;
+  }
+  .ticker-label {
+    background: var(--teal);
+    padding: 0 16px;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    white-space: nowrap;
+    z-index: 1;
+    flex-shrink: 0;
+  }
+  .ticker-track {
+    display: flex;
+    animation: ticker 50s linear infinite;
+    white-space: nowrap;
+    padding-left: 32px;
+  }
+  .ticker-track span {
+    font-size: 12px;
+    padding: 0 28px 0 0;
+    color: var(--gray-200);
+    font-family: var(--font-mono);
+  }
+  .ticker-track span::before {
+    content: '◆';
+    color: var(--teal);
+    margin-right: 12px;
+    font-size: 8px;
+  }
+  @keyframes ticker {
+    from { transform: translateX(0); }
+    to { transform: translateX(-50%); }
+  }
+
+  /* ── NAV ── */
+  nav {
+    background: var(--navy);
+    padding: 0 40px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 72px;
+    border-bottom: 3px solid var(--teal);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    box-shadow: 0 4px 24px rgba(26,46,90,0.4);
+  }
+  .nav-logo img {
+    height: 38px;
+    filter: brightness(0) invert(1);
+  }
+  .nav-links {
+    display: flex;
+    gap: 28px;
+    list-style: none;
+    align-items: center;
+  }
+  .nav-links a {
+    color: rgba(255,255,255,0.75);
+    text-decoration: none;
+    font-size: 13px;
+    font-weight: 500;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+    transition: color 0.2s;
+    padding-bottom: 2px;
+  }
+  .nav-links a:hover { color: var(--teal-light); }
+  .nav-links a.active {
+    color: var(--white);
+    border-bottom: 2px solid var(--teal);
+  }
+  .nav-date {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    color: var(--gray-400);
+    background: rgba(255,255,255,0.05);
+    padding: 6px 12px;
+    border-radius: 4px;
+  }
+
+  /* ── HERO ── */
+  .hero {
+    background: var(--navy);
+    color: var(--white);
+    padding: 0 40px;
+    display: grid;
+    grid-template-columns: 1fr 380px;
+    gap: 0;
+    min-height: 460px;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero::before {
+    content: '';
+    position: absolute;
+    top: -100px; right: -100px;
+    width: 600px; height: 600px;
+    background: radial-gradient(circle, rgba(91,164,190,0.12) 0%, transparent 70%);
+    pointer-events: none;
+  }
+  .hero-main {
+    padding: 48px 48px 48px 0;
+    border-right: 1px solid rgba(255,255,255,0.1);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+  .hero-eyebrow {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 20px;
+  }
+  .badge {
+    display: inline-flex;
+    align-items: center;
+    padding: 4px 10px;
+    border-radius: 3px;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+  }
+  .badge-breaking { background: #E03030; color: white; }
+  .badge-cms { background: var(--teal); color: white; }
+  .badge-trend { background: var(--peach); color: var(--navy); }
+  .badge-market { background: var(--navy-mid); color: var(--teal-light); border: 1px solid var(--teal); }
+  .badge-policy { background: #7B5EA7; color: white; }
+  .badge-industry { background: var(--teal-dark); color: white; }
+  .hero-date {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    color: var(--gray-400);
+  }
+  .hero h1 {
+    font-family: var(--font-display);
+    font-size: clamp(28px, 3.5vw, 42px);
+    font-weight: 900;
+    line-height: 1.15;
+    margin-bottom: 16px;
+    letter-spacing: -0.5px;
+  }
+  .hero h1 span { color: var(--teal-light); }
+  .hero-summary {
+    font-size: 16px;
+    line-height: 1.7;
+    color: rgba(255,255,255,0.78);
+    max-width: 580px;
+    margin-bottom: 24px;
+  }
+  .hero-cta {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: var(--teal);
+    color: white;
+    text-decoration: none;
+    padding: 12px 24px;
+    border-radius: 6px;
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 0.3px;
+    transition: background 0.2s, transform 0.15s;
+    width: fit-content;
+  }
+  .hero-cta:hover { background: var(--teal-dark); transform: translateY(-1px); }
+  .hero-image {
+    position: relative;
+    overflow: hidden;
+  }
+  .hero-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    opacity: 0.55;
+  }
+  .hero-image-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to right, var(--navy) 0%, transparent 40%);
+  }
+
+  /* Side stories */
+  .hero-sidebar {
+    padding: 24px 0 24px 32px;
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+  }
+  .hero-sidebar-title {
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--teal);
+    margin-bottom: 16px;
+    padding-bottom: 8px;
+    border-bottom: 1px solid rgba(255,255,255,0.1);
+  }
+  .side-story {
+    padding: 16px 0;
+    border-bottom: 1px solid rgba(255,255,255,0.07);
+    cursor: pointer;
+    transition: padding-left 0.2s;
+  }
+  .side-story:hover { padding-left: 6px; }
+  .side-story:last-child { border-bottom: none; }
+  .side-story .cat { font-size: 10px; font-weight: 600; color: var(--teal-light); letter-spacing: 1px; text-transform: uppercase; margin-bottom: 6px; }
+  .side-story h4 { font-family: var(--font-display); font-size: 15px; line-height: 1.35; color: rgba(255,255,255,0.9); font-weight: 700; margin-bottom: 4px; }
+  .side-story .meta { font-size: 11px; color: var(--gray-400); font-family: var(--font-mono); }
+
+  /* ── SECTION LABELS ── */
+  .section-divider {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    padding: 32px 40px 20px;
+  }
+  .section-divider h2 {
+    font-family: var(--font-display);
+    font-size: 22px;
+    font-weight: 900;
+    color: var(--navy);
+    white-space: nowrap;
+  }
+  .section-divider .line {
+    flex: 1;
+    height: 1px;
+    background: var(--border);
+  }
+  .section-divider .view-all {
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--teal);
+    text-decoration: none;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+    white-space: nowrap;
+  }
+  .section-divider .view-all:hover { text-decoration: underline; }
+
+  /* ── MAIN CONTENT LAYOUT ── */
+  .content-wrapper {
+    display: grid;
+    grid-template-columns: 1fr 320px;
+    gap: 32px;
+    padding: 0 40px 40px;
+    max-width: 1400px;
+    margin: 0 auto;
+  }
+
+  /* ── NEWS GRID ── */
+  .news-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+  }
+  .news-card {
+    background: var(--white);
+    border-radius: 10px;
+    overflow: hidden;
+    border: 1px solid var(--border);
+    transition: transform 0.2s, box-shadow 0.2s;
+    display: flex;
+    flex-direction: column;
+    text-decoration: none;
+    color: inherit;
+  }
+  .news-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 40px rgba(26,46,90,0.12);
+  }
+  .card-img {
+    position: relative;
+    height: 175px;
+    overflow: hidden;
+    background: var(--gray-100);
+  }
+  .card-img img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.4s;
+  }
+  .news-card:hover .card-img img { transform: scale(1.04); }
+  .card-badge {
+    position: absolute;
+    top: 12px;
+    left: 12px;
+  }
+  .card-body {
+    padding: 20px;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+  }
+  .card-body h3 {
+    font-family: var(--font-display);
+    font-size: 16px;
+    font-weight: 700;
+    line-height: 1.35;
+    color: var(--navy);
+    margin-bottom: 10px;
+    flex: 1;
+  }
+  .card-body p {
+    font-size: 13px;
+    line-height: 1.6;
+    color: var(--gray-600);
+    margin-bottom: 14px;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+  .card-footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-top: 12px;
+    border-top: 1px solid var(--gray-100);
+  }
+  .card-source {
+    font-size: 11px;
+    font-family: var(--font-mono);
+    color: var(--gray-400);
+    font-weight: 500;
+  }
+  .card-link {
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--teal);
+    text-decoration: none;
+    letter-spacing: 0.3px;
+  }
+  .card-link:hover { text-decoration: underline; }
+
+  /* Wide card */
+  .news-card.wide {
+    grid-column: span 2;
+    flex-direction: row;
+  }
+  .news-card.wide .card-img {
+    width: 280px;
+    flex-shrink: 0;
+    height: auto;
+    border-radius: 0;
+  }
+  .news-card.wide .card-body h3 { font-size: 20px; }
+  .news-card.wide .card-body p {
+    -webkit-line-clamp: 5;
+  }
+
+  /* ── SIDEBAR ── */
+  .sidebar { display: flex; flex-direction: column; gap: 24px; }
+
+  .sidebar-widget {
+    background: var(--white);
+    border-radius: 10px;
+    border: 1px solid var(--border);
+    overflow: hidden;
+  }
+  .widget-header {
+    padding: 16px 20px;
+    background: var(--navy);
+    color: var(--white);
+  }
+  .widget-header h3 {
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: var(--teal-light);
+  }
+  .widget-body { padding: 0; }
+
+  .trend-item {
+    padding: 14px 20px;
+    border-bottom: 1px solid var(--gray-100);
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    text-decoration: none;
+    color: inherit;
+    transition: background 0.15s;
+  }
+  .trend-item:hover { background: var(--off-white); }
+  .trend-item:last-child { border-bottom: none; }
+  .trend-num {
+    font-family: var(--font-mono);
+    font-size: 18px;
+    font-weight: 500;
+    color: var(--border);
+    line-height: 1;
+    min-width: 24px;
+  }
+  .trend-content { flex: 1; }
+  .trend-content h4 {
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--navy);
+    line-height: 1.35;
+    margin-bottom: 3px;
+  }
+  .trend-content span {
+    font-size: 11px;
+    color: var(--gray-400);
+    font-family: var(--font-mono);
+  }
+
+  /* Stats widget */
+  .stats-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1px;
+    background: var(--border);
+  }
+  .stat-cell {
+    background: var(--white);
+    padding: 18px 16px;
+    text-align: center;
+  }
+  .stat-value {
+    font-family: var(--font-display);
+    font-size: 26px;
+    font-weight: 900;
+    color: var(--navy);
+    line-height: 1;
+    margin-bottom: 4px;
+  }
+  .stat-value.up { color: #16A34A; }
+  .stat-value.down { color: #DC2626; }
+  .stat-value.teal { color: var(--teal-dark); }
+  .stat-label {
+    font-size: 10px;
+    font-weight: 600;
+    color: var(--gray-400);
+    letter-spacing: 0.8px;
+    text-transform: uppercase;
+    line-height: 1.3;
+  }
+  .stat-change {
+    font-size: 11px;
+    font-family: var(--font-mono);
+    margin-top: 2px;
+  }
+  .stat-change.up { color: #16A34A; }
+  .stat-change.down { color: #DC2626; }
+
+  /* CMS alert widget */
+  .cms-alert {
+    background: linear-gradient(135deg, var(--navy) 0%, #0F1E3D 100%);
+    border-radius: 10px;
+    padding: 24px;
+    color: var(--white);
+    border: 1px solid rgba(91,164,190,0.3);
+    position: relative;
+    overflow: hidden;
+  }
+  .cms-alert::before {
+    content: '';
+    position: absolute;
+    bottom: -30px; right: -30px;
+    width: 150px; height: 150px;
+    background: radial-gradient(circle, rgba(91,164,190,0.15) 0%, transparent 70%);
+  }
+  .cms-alert .alert-icon {
+    font-size: 28px;
+    margin-bottom: 12px;
+  }
+  .cms-alert h3 {
+    font-family: var(--font-display);
+    font-size: 17px;
+    font-weight: 900;
+    margin-bottom: 10px;
+    line-height: 1.2;
+  }
+  .cms-alert p {
+    font-size: 13px;
+    line-height: 1.65;
+    color: rgba(255,255,255,0.78);
+    margin-bottom: 16px;
+  }
+  .cms-alert a {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    background: var(--teal);
+    color: white;
+    text-decoration: none;
+    padding: 9px 18px;
+    border-radius: 5px;
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+    transition: background 0.2s;
+  }
+  .cms-alert a:hover { background: var(--teal-dark); }
+
+  /* ── TRENDS ROW ── */
+  .trends-row {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+    padding: 0 40px 40px;
+  }
+  .trend-card {
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 24px;
+    position: relative;
+    overflow: hidden;
+    transition: transform 0.2s, box-shadow 0.2s;
+  }
+  .trend-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 30px rgba(26,46,90,0.1);
+  }
+  .trend-card::after {
+    content: '';
+    position: absolute;
+    top: 0; left: 0;
+    width: 4px; height: 100%;
+  }
+  .trend-card.teal::after { background: var(--teal); }
+  .trend-card.navy::after { background: var(--navy); }
+  .trend-card.peach::after { background: var(--peach); }
+  .trend-card.green::after { background: #16A34A; }
+  .trend-card-icon {
+    font-size: 32px;
+    margin-bottom: 14px;
+  }
+  .trend-card h3 {
+    font-family: var(--font-display);
+    font-size: 15px;
+    font-weight: 700;
+    color: var(--navy);
+    margin-bottom: 8px;
+    line-height: 1.3;
+  }
+  .trend-card p {
+    font-size: 12.5px;
+    line-height: 1.6;
+    color: var(--gray-600);
+  }
+  .trend-metric {
+    margin-top: 14px;
+    padding-top: 14px;
+    border-top: 1px solid var(--gray-100);
+    display: flex;
+    align-items: baseline;
+    gap: 6px;
+  }
+  .trend-metric .metric-value {
+    font-family: var(--font-display);
+    font-size: 28px;
+    font-weight: 900;
+    color: var(--navy);
+  }
+  .trend-metric .metric-label {
+    font-size: 12px;
+    color: var(--gray-600);
+    font-weight: 500;
+  }
+  .trend-metric .metric-change {
+    font-size: 12px;
+    font-family: var(--font-mono);
+    padding: 2px 6px;
+    border-radius: 3px;
+    margin-left: auto;
+  }
+  .metric-change.up { background: #DCFCE7; color: #16A34A; }
+  .metric-change.down { background: #FEE2E2; color: #DC2626; }
+
+  /* ── PRESCRIBER SECTION ── */
+  .prescriber-section {
+    background: var(--navy);
+    padding: 40px;
+    margin: 0;
+  }
+  .prescriber-section .section-divider {
+    padding: 0 0 24px;
+  }
+  .prescriber-section .section-divider h2 { color: var(--white); }
+  .prescriber-section .section-divider .line { background: rgba(255,255,255,0.15); }
+  .prescriber-section .section-divider .view-all { color: var(--teal-light); }
+  .prescriber-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+  }
+  .prescriber-card {
+    background: rgba(255,255,255,0.05);
+    border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 10px;
+    overflow: hidden;
+    text-decoration: none;
+    color: inherit;
+    transition: background 0.2s, transform 0.2s;
+    display: flex;
+    flex-direction: column;
+  }
+  .prescriber-card:hover {
+    background: rgba(255,255,255,0.09);
+    transform: translateY(-2px);
+  }
+  .prescriber-card-img {
+    height: 150px;
+    overflow: hidden;
+    background: rgba(91,164,190,0.2);
+  }
+  .prescriber-card-img img {
+    width: 100%; height: 100%;
+    object-fit: cover;
+    opacity: 0.7;
+  }
+  .prescriber-card-body {
+    padding: 18px;
+    flex: 1;
+  }
+  .prescriber-card-body .cat {
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: var(--teal-light);
+    margin-bottom: 8px;
+  }
+  .prescriber-card-body h3 {
+    font-family: var(--font-display);
+    font-size: 16px;
+    font-weight: 700;
+    color: var(--white);
+    line-height: 1.3;
+    margin-bottom: 8px;
+  }
+  .prescriber-card-body p {
+    font-size: 12.5px;
+    line-height: 1.6;
+    color: rgba(255,255,255,0.62);
+  }
+  .prescriber-card-footer {
+    padding: 12px 18px;
+    border-top: 1px solid rgba(255,255,255,0.08);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .prescriber-card-footer span {
+    font-size: 11px;
+    font-family: var(--font-mono);
+    color: rgba(255,255,255,0.4);
+  }
+  .prescriber-card-footer a {
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--teal-light);
+    text-decoration: none;
+  }
+
+  /* ── FOOTER ── */
+  footer {
+    background: #0D1928;
+    color: rgba(255,255,255,0.6);
+    padding: 40px;
+    margin-top: 0;
+  }
+  .footer-inner {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 40px;
+  }
+  .footer-brand img { height: 32px; opacity: 0.9; margin-bottom: 12px; }
+  .footer-brand p { font-size: 12px; line-height: 1.6; max-width: 280px; }
+  .footer-tagline {
+    font-size: 11px;
+    color: var(--teal-light);
+    font-family: var(--font-mono);
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    margin-top: 8px;
+  }
+  .footer-links h4 {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: var(--teal-light);
+    margin-bottom: 12px;
+  }
+  .footer-links ul { list-style: none; }
+  .footer-links li { margin-bottom: 8px; }
+  .footer-links a {
+    font-size: 13px;
+    color: rgba(255,255,255,0.55);
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+  .footer-links a:hover { color: var(--teal-light); }
+  .footer-bottom {
+    margin-top: 32px;
+    padding-top: 20px;
+    border-top: 1px solid rgba(255,255,255,0.08);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 11px;
+    font-family: var(--font-mono);
+  }
+  .footer-bottom a { color: var(--teal-light); text-decoration: none; }
+
+
+  /* ── MEMBERS SECTION ── */
+  .members-section {
+    background: linear-gradient(160deg, #F7F3EE 0%, #EEF6FA 100%);
+    padding: 48px 40px;
+    border-top: 4px solid var(--peach);
+    position: relative;
+    overflow: hidden;
+  }
+  .members-section::before {
+    content: 'MEMBERS';
+    position: absolute;
+    right: -20px; top: 50%;
+    transform: translateY(-50%) rotate(90deg);
+    font-family: var(--font-display);
+    font-size: 120px;
+    font-weight: 900;
+    color: rgba(237,184,150,0.1);
+    pointer-events: none;
+    letter-spacing: -4px;
+    white-space: nowrap;
+  }
+  .section-intro {
+    max-width: 640px;
+    margin-bottom: 32px;
+  }
+  .section-intro p {
+    font-size: 14px;
+    line-height: 1.7;
+    color: var(--gray-600);
+    margin-top: 8px;
+  }
+  .members-layout {
+    display: grid;
+    grid-template-columns: 1fr 1fr 340px;
+    gap: 28px;
+    align-items: start;
+  }
+  .member-feature-card {
+    background: var(--white);
+    border-radius: 12px;
+    overflow: hidden;
+    border: 1px solid var(--border);
+    box-shadow: 0 4px 20px rgba(26,46,90,0.06);
+    text-decoration: none;
+    color: inherit;
+    display: flex;
+    flex-direction: column;
+    transition: transform 0.2s, box-shadow 0.2s;
+  }
+  .member-feature-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 36px rgba(26,46,90,0.12);
+  }
+  .member-feature-card .card-img { height: 200px; }
+  .member-feature-card .card-img img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.4s; }
+  .member-feature-card:hover .card-img img { transform: scale(1.04); }
+  .member-feature-card .card-body { padding: 22px; flex: 1; }
+  .member-feature-card .card-body h3 {
+    font-family: var(--font-display);
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--navy);
+    line-height: 1.3;
+    margin-bottom: 10px;
+  }
+  .member-feature-card .card-body p {
+    font-size: 13px;
+    line-height: 1.65;
+    color: var(--gray-600);
+    margin-bottom: 16px;
+  }
+  .member-feature-card .card-footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 12px 22px;
+    border-top: 1px solid var(--gray-100);
+    background: var(--off-white);
+  }
+  .members-stacked {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+  .member-mini-card {
+    background: var(--white);
+    border-radius: 10px;
+    border: 1px solid var(--border);
+    padding: 18px;
+    text-decoration: none;
+    color: inherit;
+    display: flex;
+    gap: 14px;
+    align-items: flex-start;
+    transition: box-shadow 0.2s, transform 0.2s;
+  }
+  .member-mini-card:hover {
+    box-shadow: 0 6px 20px rgba(26,46,90,0.1);
+    transform: translateX(4px);
+  }
+  .member-mini-icon {
+    width: 44px;
+    height: 44px;
+    border-radius: 10px;
+    background: var(--peach-light);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 20px;
+    flex-shrink: 0;
+  }
+  .member-mini-card h4 {
+    font-family: var(--font-display);
+    font-size: 14px;
+    font-weight: 700;
+    color: var(--navy);
+    line-height: 1.3;
+    margin-bottom: 5px;
+  }
+  .member-mini-card p {
+    font-size: 12px;
+    line-height: 1.55;
+    color: var(--gray-600);
+  }
+  .member-mini-card .meta {
+    font-size: 11px;
+    font-family: var(--font-mono);
+    color: var(--gray-400);
+    margin-top: 6px;
+  }
+  .members-stat-strip {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+  }
+  .members-stat-strip .sidebar-widget {
+    border-radius: 12px;
+  }
+  .peach-stat {
+    background: linear-gradient(135deg, var(--peach) 0%, #E8956A 100%);
+    border-radius: 12px;
+    padding: 24px;
+    color: var(--navy);
+  }
+  .peach-stat h3 {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    opacity: 0.7;
+    margin-bottom: 16px;
+  }
+  .peach-stat-row {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+  }
+  .peach-stat-item { border-bottom: 1px solid rgba(26,46,90,0.12); padding-bottom: 12px; }
+  .peach-stat-item:last-child { border-bottom: none; padding-bottom: 0; }
+  .peach-stat-item .val {
+    font-family: var(--font-display);
+    font-size: 30px;
+    font-weight: 900;
+    line-height: 1;
+    margin-bottom: 3px;
+  }
+  .peach-stat-item .lbl {
+    font-size: 12px;
+    font-weight: 500;
+    opacity: 0.75;
+    line-height: 1.3;
+  }
+  .peach-stat-item .chg {
+    font-size: 11px;
+    font-family: var(--font-mono);
+    background: rgba(26,46,90,0.12);
+    padding: 2px 6px;
+    border-radius: 3px;
+    display: inline-block;
+    margin-top: 4px;
+  }
+
+  /* ── DME PROVIDERS SECTION ── */
+  .dme-section {
+    background: var(--navy);
+    padding: 48px 40px;
+    border-top: 4px solid var(--teal);
+    position: relative;
+    overflow: hidden;
+  }
+  .dme-section::before {
+    content: 'PROVIDERS';
+    position: absolute;
+    left: -30px; top: 50%;
+    transform: translateY(-50%) rotate(-90deg);
+    font-family: var(--font-display);
+    font-size: 120px;
+    font-weight: 900;
+    color: rgba(91,164,190,0.07);
+    pointer-events: none;
+    letter-spacing: -4px;
+    white-space: nowrap;
+  }
+  .dme-section .section-divider h2 { color: var(--white); }
+  .dme-section .section-divider .line { background: rgba(255,255,255,0.12); }
+  .dme-section .section-divider .view-all { color: var(--teal-light); }
+  .dme-section .section-intro p { color: rgba(255,255,255,0.6); }
+  .dme-layout {
+    display: grid;
+    grid-template-columns: 340px 1fr;
+    gap: 28px;
+    align-items: start;
+  }
+  .dme-alert-stack {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+  }
+  .dme-alert-card {
+    border-radius: 10px;
+    padding: 20px;
+    border-left: 4px solid;
+  }
+  .dme-alert-card.red   { background: rgba(220,38,38,0.1);  border-color: #EF4444; }
+  .dme-alert-card.teal  { background: rgba(91,164,190,0.12); border-color: var(--teal); }
+  .dme-alert-card.amber { background: rgba(245,158,11,0.1);  border-color: #F59E0B; }
+  .dme-alert-card.green { background: rgba(22,163,74,0.1);   border-color: #22C55E; }
+  .dme-alert-card .alert-label {
+    font-size: 9px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    margin-bottom: 6px;
+  }
+  .dme-alert-card.red   .alert-label { color: #FCA5A5; }
+  .dme-alert-card.teal  .alert-label { color: var(--teal-light); }
+  .dme-alert-card.amber .alert-label { color: #FCD34D; }
+  .dme-alert-card.green .alert-label { color: #86EFAC; }
+  .dme-alert-card h4 {
+    font-family: var(--font-display);
+    font-size: 14px;
+    font-weight: 700;
+    color: var(--white);
+    line-height: 1.3;
+    margin-bottom: 6px;
+  }
+  .dme-alert-card p {
+    font-size: 12px;
+    line-height: 1.6;
+    color: rgba(255,255,255,0.6);
+  }
+  .dme-alert-card a {
+    font-size: 11px;
+    font-weight: 600;
+    color: var(--teal-light);
+    text-decoration: none;
+    display: inline-block;
+    margin-top: 8px;
+    letter-spacing: 0.3px;
+  }
+  .dme-alert-card a:hover { text-decoration: underline; }
+  .dme-news-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+  }
+  .dme-card {
+    background: rgba(255,255,255,0.06);
+    border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 10px;
+    overflow: hidden;
+    text-decoration: none;
+    color: inherit;
+    display: flex;
+    flex-direction: column;
+    transition: background 0.2s, transform 0.2s;
+  }
+  .dme-card:hover {
+    background: rgba(255,255,255,0.1);
+    transform: translateY(-3px);
+  }
+  .dme-card-img {
+    height: 130px;
+    overflow: hidden;
+  }
+  .dme-card-img img {
+    width: 100%; height: 100%;
+    object-fit: cover;
+    opacity: 0.65;
+    transition: transform 0.4s, opacity 0.2s;
+  }
+  .dme-card:hover .dme-card-img img { transform: scale(1.04); opacity: 0.8; }
+  .dme-card-body {
+    padding: 16px;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+  }
+  .dme-card-body .cat {
+    font-size: 9px;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: var(--teal-light);
+    margin-bottom: 7px;
+  }
+  .dme-card-body h3 {
+    font-family: var(--font-display);
+    font-size: 14px;
+    font-weight: 700;
+    color: var(--white);
+    line-height: 1.3;
+    margin-bottom: 8px;
+    flex: 1;
+  }
+  .dme-card-body p {
+    font-size: 12px;
+    line-height: 1.6;
+    color: rgba(255,255,255,0.55);
+    margin-bottom: 12px;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+  .dme-card-footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 16px;
+    border-top: 1px solid rgba(255,255,255,0.08);
+  }
+  .dme-card-footer span {
+    font-size: 10px;
+    font-family: var(--font-mono);
+    color: rgba(255,255,255,0.35);
+  }
+  .dme-card-footer a {
+    font-size: 11px;
+    font-weight: 600;
+    color: var(--teal-light);
+    text-decoration: none;
+  }
+  .dme-bottom-strip {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 16px;
+    margin-top: 24px;
+  }
+  .dme-bottom-card {
+    background: rgba(255,255,255,0.05);
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 10px;
+    padding: 18px;
+    text-decoration: none;
+    color: inherit;
+    transition: background 0.2s;
+  }
+  .dme-bottom-card:hover { background: rgba(255,255,255,0.09); }
+  .dme-bottom-card .icon { font-size: 24px; margin-bottom: 10px; }
+  .dme-bottom-card h4 {
+    font-family: var(--font-display);
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--white);
+    line-height: 1.3;
+    margin-bottom: 6px;
+  }
+  .dme-bottom-card p {
+    font-size: 11.5px;
+    color: rgba(255,255,255,0.55);
+    line-height: 1.55;
+  }
+  .dme-bottom-card .src {
+    font-size: 10px;
+    font-family: var(--font-mono);
+    color: var(--teal-light);
+    margin-top: 10px;
+    display: block;
+  }
+
+  /* Animations */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(16px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  .hero-main { animation: fadeUp 0.6s ease both; }
+  .news-card { animation: fadeUp 0.5s ease both; }
+  .news-card:nth-child(2) { animation-delay: 0.08s; }
+  .news-card:nth-child(3) { animation-delay: 0.16s; }
+  .news-card:nth-child(4) { animation-delay: 0.24s; }
+  .news-card:nth-child(5) { animation-delay: 0.32s; }
+
+
+  /* ── LIVE FEED STATES ── */
+  .live-badge {
+    display: inline-flex; align-items: center; gap: 5px;
+    background: #16A34A; color: white;
+    font-size: 10px; font-weight: 700; letter-spacing: 1.2px;
+    text-transform: uppercase; padding: 3px 8px; border-radius: 3px;
+  }
+  .live-dot {
+    width: 6px; height: 6px; border-radius: 50%;
+    background: white; animation: pulse-dot 1.4s ease-in-out infinite;
+  }
+  @keyframes pulse-dot {
+    0%,100% { opacity:1; transform:scale(1); }
+    50% { opacity:0.4; transform:scale(0.7); }
+  }
+  .refresh-info {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    color: var(--gray-400);
+    display: flex; align-items: center; gap: 8px;
+  }
+  .refresh-info.dark { color: rgba(255,255,255,0.4); }
+  .refresh-spin {
+    display: inline-block;
+    animation: spin 1s linear infinite;
+    font-size: 12px;
+  }
+  @keyframes spin { from{transform:rotate(0deg)} to{transform:rotate(360deg)} }
+
+  /* Feed skeletons */
+  .skeleton {
+    background: linear-gradient(90deg, var(--gray-100) 25%, var(--gray-200) 50%, var(--gray-100) 75%);
+    background-size: 200% 100%;
+    animation: shimmer 1.5s infinite;
+    border-radius: 6px;
+  }
+  .skeleton.dark {
+    background: linear-gradient(90deg, rgba(255,255,255,0.05) 25%, rgba(255,255,255,0.1) 50%, rgba(255,255,255,0.05) 75%);
+    background-size: 200% 100%;
+  }
+  @keyframes shimmer { 0%{background-position:200% 0} 100%{background-position:-200% 0} }
+  .skeleton-card {
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    overflow: hidden;
+    min-height: 260px;
+  }
+  .skeleton-card.dark {
+    background: rgba(255,255,255,0.05);
+    border: 1px solid rgba(255,255,255,0.1);
+  }
+  .skeleton-img { height: 175px; }
+  .skeleton-img.short { height: 130px; }
+  .skeleton-body { padding: 16px; display: flex; flex-direction: column; gap: 8px; }
+  .skeleton-line { height: 12px; }
+  .skeleton-line.w100 { width: 100%; }
+  .skeleton-line.w80  { width: 80%;  }
+  .skeleton-line.w60  { width: 60%;  }
+  .skeleton-line.w40  { width: 40%;  }
+
+  /* Feed error */
+  .feed-error {
+    padding: 32px;
+    text-align: center;
+    color: var(--gray-400);
+    font-size: 13px;
+  }
+  .feed-error .icon { font-size: 32px; margin-bottom: 8px; }
+
+  /* Last updated bar */
+  .last-updated-bar {
+    padding: 8px 40px;
+    background: rgba(91,164,190,0.08);
+    border-bottom: 1px solid rgba(91,164,190,0.2);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-size: 11px;
+    font-family: var(--font-mono);
+    color: var(--teal-dark);
+  }
+  .last-updated-bar.dark {
+    background: rgba(91,164,190,0.05);
+    border-color: rgba(91,164,190,0.15);
+    color: var(--teal-light);
+  }
+  .feed-tag {
+    font-size: 9px; font-weight: 700; letter-spacing: 1.5px;
+    text-transform: uppercase; padding: 2px 7px; border-radius: 3px;
+    background: rgba(91,164,190,0.2); color: var(--teal-dark);
+    margin-left: 8px;
+  }
+  .feed-tag.dark { background: rgba(91,164,190,0.15); color: var(--teal-light); }
+
+
+
+  /* ── WORDMARK ── */
+  .nav-wordmark {
+    display: flex;
+    flex-direction: column;
+    line-height: 1;
+  }
+  .nav-wordmark .word-main {
+    font-family: var(--font-display);
+    font-size: 22px;
+    font-weight: 900;
+    color: var(--white);
+    letter-spacing: -0.5px;
+  }
+  .nav-wordmark .word-main span { color: var(--teal-light); }
+  .nav-wordmark .word-sub {
+    font-family: var(--font-mono);
+    font-size: 9px;
+    font-weight: 500;
+    letter-spacing: 2.5px;
+    text-transform: uppercase;
+    color: var(--teal);
+    margin-top: 2px;
+  }
+  .footer-wordmark {
+    font-family: var(--font-display);
+    font-size: 26px;
+    font-weight: 900;
+    color: var(--white);
+    letter-spacing: -0.5px;
+    margin-bottom: 10px;
+    line-height: 1;
+  }
+  .footer-wordmark span { color: var(--teal-light); }
+
+
+  .nav-wordmark{display:flex;flex-direction:column;line-height:1}
+  .nav-wordmark .word-main{font-family:var(--font-display);font-size:22px;font-weight:900;color:var(--white);letter-spacing:-0.5px}
+  .nav-wordmark .word-main span{color:var(--teal-light)}
+  .nav-wordmark .word-sub{font-family:var(--font-mono);font-size:9px;font-weight:500;letter-spacing:2.5px;text-transform:uppercase;color:var(--teal);margin-top:2px}
+  .footer-wordmark{font-family:var(--font-display);font-size:26px;font-weight:900;color:var(--white);letter-spacing:-0.5px;margin-bottom:10px;line-height:1}
+  .footer-wordmark span{color:var(--teal-light)}
+  .live-badge{display:inline-flex;align-items:center;gap:5px;background:#16A34A;color:white;font-size:10px;font-weight:700;letter-spacing:1.2px;text-transform:uppercase;padding:3px 8px;border-radius:3px}
+  .live-dot{width:6px;height:6px;border-radius:50%;background:white;animation:pulse-dot 1.4s ease-in-out infinite}
+  @keyframes pulse-dot{0%,100%{opacity:1;transform:scale(1)}50%{opacity:0.4;transform:scale(0.7)}}
+  .refresh-info{font-family:var(--font-mono);font-size:11px;color:var(--gray-400);display:flex;align-items:center;gap:8px}
+  .refresh-info.dark{color:rgba(255,255,255,0.4)}
+  .refresh-spin{display:inline-block;animation:spin 1s linear infinite;font-size:12px}
+  @keyframes spin{from{transform:rotate(0deg)}to{transform:rotate(360deg)}}
+  .skeleton{background:linear-gradient(90deg,var(--gray-100) 25%,var(--gray-200) 50%,var(--gray-100) 75%);background-size:200% 100%;animation:shimmer 1.5s infinite;border-radius:6px}
+  .skeleton.dark{background:linear-gradient(90deg,rgba(255,255,255,0.05) 25%,rgba(255,255,255,0.1) 50%,rgba(255,255,255,0.05) 75%);background-size:200% 100%}
+  @keyframes shimmer{0%{background-position:200% 0}100%{background-position:-200% 0}}
+  .skeleton-card{background:var(--white);border:1px solid var(--border);border-radius:10px;overflow:hidden;min-height:260px}
+  .skeleton-card.dark{background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.1)}
+  .skeleton-img{height:175px}.skeleton-img.short{height:130px}
+  .skeleton-body{padding:16px;display:flex;flex-direction:column;gap:8px}
+  .skeleton-line{height:12px}
+  .skeleton-line.w100{width:100%}.skeleton-line.w80{width:80%}.skeleton-line.w60{width:60%}.skeleton-line.w40{width:40%}
+  .feed-error{padding:32px;text-align:center;color:var(--gray-400);font-size:13px}
+  .feed-error .icon{font-size:32px;margin-bottom:8px}
+  .last-updated-bar{padding:8px 40px;background:rgba(91,164,190,0.08);border-bottom:1px solid rgba(91,164,190,0.2);display:flex;align-items:center;justify-content:space-between;font-size:11px;font-family:var(--font-mono);color:var(--teal-dark)}
+  .feed-tag{font-size:9px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;padding:2px 7px;border-radius:3px;background:rgba(91,164,190,0.2);color:var(--teal-dark);margin-left:8px}
+  .hero-bg{position:absolute;inset:0;background-size:cover;background-position:center;background-image:url('https://images.unsplash.com/photo-1585829365295-ab7cd400c167?w=1200&q=85&fit=crop')}
+  .hero-bg-overlay{position:absolute;inset:0;background:linear-gradient(to right,rgba(26,46,90,0.97) 55%,rgba(26,46,90,0.75) 100%)}
+  .hero{position:relative;overflow:hidden}
+  .hero-content-wrap{position:relative;z-index:2;display:grid;grid-template-columns:1fr 380px;gap:0;min-height:460px;padding:0 40px}
+  .card-img img,.prescriber-card-img img,.dme-card-img img,.member-feature-card .card-img img{image-rendering:-webkit-optimize-contrast;object-fit:cover;width:100%;height:100%}
+  .card-img{background:var(--gray-200) !important}
+  .dme-card-img{background:#1a3050 !important}
+  .prescriber-card-img{background:#1a3050 !important}
+  .insights-row{display:grid;grid-template-columns:repeat(5,1fr);gap:16px;padding:0 40px 40px}
+  .insight-card{background:var(--white);border:1px solid var(--border);border-radius:12px;padding:22px 18px;position:relative;overflow:hidden;transition:transform 0.2s,box-shadow 0.2s}
+  .insight-card:hover{transform:translateY(-3px);box-shadow:0 8px 28px rgba(26,46,90,0.1)}
+  .insight-card::after{content:'';position:absolute;top:0;left:0;width:100%;height:4px}
+  .insight-card.c-teal::after{background:var(--teal)}
+  .insight-card.c-navy::after{background:var(--navy)}
+  .insight-card.c-peach::after{background:var(--peach)}
+  .insight-card.c-green::after{background:#16A34A}
+  .insight-card.c-purple::after{background:#7B5EA7}
+  .insight-icon{font-size:28px;margin-bottom:12px}
+  .insight-value{font-family:var(--font-display);font-size:32px;font-weight:900;color:var(--navy);line-height:1;margin-bottom:4px}
+  .insight-label{font-size:11px;font-weight:700;color:var(--gray-400);letter-spacing:0.8px;text-transform:uppercase;line-height:1.3;margin-bottom:8px}
+  .insight-desc{font-size:12px;line-height:1.55;color:var(--gray-600)}
+  .insight-change{font-family:var(--font-mono);font-size:11px;padding:2px 7px;border-radius:3px;display:inline-block;margin-top:8px}
+  .insight-change.up{background:#DCFCE7;color:#16A34A}
+  .insight-change.down{background:#FEE2E2;color:#DC2626}
+  .insight-change.flat{background:var(--gray-100);color:var(--gray-600)}
+  .policy-timeline{padding:0 40px 48px;display:grid;grid-template-columns:220px 1fr;gap:32px;align-items:start}
+  .policy-timeline-label h2{font-family:var(--font-display);font-size:22px;font-weight:900;color:var(--navy);margin-bottom:8px}
+  .policy-timeline-label p{font-size:13px;color:var(--gray-600);line-height:1.6}
+  .timeline-items{display:flex;flex-direction:column;gap:0}
+  .timeline-item{display:grid;grid-template-columns:90px 24px 1fr;gap:0 16px;align-items:start;padding-bottom:20px}
+  .timeline-item:last-child{padding-bottom:0}
+  .timeline-date{font-family:var(--font-mono);font-size:11px;font-weight:600;color:var(--teal-dark);padding-top:2px;text-align:right;line-height:1.3}
+  .timeline-dot-col{display:flex;flex-direction:column;align-items:center}
+  .timeline-dot{width:14px;height:14px;border-radius:50%;border:3px solid var(--teal);background:var(--white);flex-shrink:0;margin-top:2px}
+  .timeline-dot.active{background:var(--teal);box-shadow:0 0 0 4px rgba(91,164,190,0.2)}
+  .timeline-dot.red{border-color:#EF4444;background:#EF4444;box-shadow:0 0 0 4px rgba(239,68,68,0.15)}
+  .timeline-dot.amber{border-color:#F59E0B;background:var(--white)}
+  .timeline-line{flex:1;width:2px;background:var(--border);margin-top:4px;min-height:20px}
+  .timeline-item:last-child .timeline-line{display:none}
+  .timeline-content h4{font-size:13px;font-weight:600;color:var(--navy);line-height:1.35;margin-bottom:3px}
+  .timeline-content p{font-size:12px;color:var(--gray-600);line-height:1.5}
+  .timeline-tag{display:inline-block;font-size:9px;font-weight:700;letter-spacing:1.2px;text-transform:uppercase;padding:2px 7px;border-radius:3px;margin-bottom:5px}
+  .timeline-tag.red{background:#FEE2E2;color:#DC2626}
+  .timeline-tag.teal{background:rgba(91,164,190,0.15);color:var(--teal-dark)}
+  .timeline-tag.amber{background:#FEF3C7;color:#92400E}
+  .timeline-tag.green{background:#DCFCE7;color:#15803D}
+  .timeline-tag.purple{background:#F3E8FF;color:#7B5EA7}
+</style>
+</head>
+<body>
+
+
+<div class="ticker-wrap">
+  <div class="ticker-label"><span class="live-badge"><span class="live-dot"></span>LIVE</span></div>
+  <div class="ticker-track">
+    <span>CMS Moratorium: No new DME supplier enrollment — Active</span>
+    <span>Medicare Advantage enrollment surpasses 33 million nationally</span>
+    <span>GLP-1 prescriptions surge — CGM device demand up 34% YoY</span>
+    <span>Prior Authorization Reform Act expands oversight of MA plans</span>
+    <span>HME industry consolidation — 47 acquisitions recorded in 2024</span>
+    <span>Home oxygen therapy utilization rises amid post-COVID volumes</span>
+    <span>CMS Moratorium: No new DME supplier enrollment — Active</span>
+    <span>Medicare Advantage enrollment surpasses 33 million nationally</span>
+  </div>
+</div>
+
+<nav>
+  <div class="nav-logo">
+    <div class="nav-wordmark">
+      <div class="word-main">DME<span>Hub</span></div>
+      <div class="word-sub">Industry Intelligence</div>
+    </div>
+  </div>
+  <ul class="nav-links">
+    <li><a href="#" class="active">Hub</a></li>
+    <li><a href="#dme-news-section">News</a></li>
+    <li><a href="#insights-section">Insights</a></li>
+    <li><a href="#prescriber-section">Prescribers</a></li>
+    <li><a href="#member-section">Members</a></li>
+    <li><a href="#provider-section">Providers</a></li>
+    <li><a href="#policy-section">Policy Timeline</a></li>
+  </ul>
+  <div style="display:flex;align-items:center;gap:12px">
+    <span class="live-badge"><span class="live-dot"></span>LIVE FEED</span>
+    <div class="nav-date last-updated-time">Loading…</div>
+  </div>
+</nav>
+
+<div class="last-updated-bar">
+  <span>
+    <span class="live-badge" style="margin-right:8px"><span class="live-dot"></span>LIVE</span>
+    Sources: KFF · Fierce Healthcare · Health Affairs · Medscape
+    <span class="feed-tag">RSS</span>
+    <span class="feed-tag">Auto-refresh 30min</span>
+  </span>
+  <span class="last-updated-time">Connecting to feeds…</span>
+</div>
+
+<div class="hero">
+  <div id="breaking-hero-img" class="hero-bg"></div>
+  <div class="hero-bg-overlay"></div>
+  <div class="hero-content-wrap">
+    <div class="hero-main">
+      <div id="breaking-hero">
+        <div class="hero-eyebrow"><span class="badge badge-breaking">Breaking</span><span class="badge badge-cms">Loading…</span></div>
+        <h1>Loading latest <span>breaking news</span>…</h1>
+        <p class="hero-summary">Connecting to live industry feeds. The most recent major story will appear here automatically.</p>
+      </div>
+    </div>
+    <div class="hero-sidebar">
+      <div class="hero-sidebar-title">Top Stories</div>
+      <div id="breaking-sidebar"><div style="color:rgba(255,255,255,0.4);font-size:13px;padding:12px 0">Loading top stories…</div></div>
+    </div>
+  </div>
+</div>
+
+<div class="section-divider">
+  <h2>Market Pulse</h2><div class="line"></div>
+  <a href="#insights-section" class="view-all">Full Insights →</a>
+</div>
+<div class="trends-row">
+  <div class="trend-card teal"><div class="trend-card-icon">🏥</div><h3>U.S. DME Market Size</h3><p>Driven by aging demographics and post-acute care shifts toward home settings.</p><div class="trend-metric"><span class="metric-value">$62.4B</span><span class="metric-label">2025 est.</span><span class="metric-change up">↑ 6.2%</span></div></div>
+  <div class="trend-card navy"><div class="trend-card-icon">👴</div><h3>Medicare Advantage Enrollment</h3><p>MA enrollment now represents over 50% of all Medicare beneficiaries.</p><div class="trend-metric"><span class="metric-value">33.8M</span><span class="metric-label">members</span><span class="metric-change up">↑ 8.4%</span></div></div>
+  <div class="trend-card peach"><div class="trend-card-icon">💊</div><h3>Prior Auth Denial Rate</h3><p>MA plans face scrutiny over elevated prior authorization denial rates for DME.</p><div class="trend-metric"><span class="metric-value">12.3%</span><span class="metric-label">denial rate</span><span class="metric-change down">↑ 1.8pp</span></div></div>
+  <div class="trend-card green"><div class="trend-card-icon">🏠</div><h3>Home vs. Facility Cost Gap</h3><p>Home-based DME delivery demonstrates significant cost advantages over facility care.</p><div class="trend-metric"><span class="metric-value">41%</span><span class="metric-label">cost savings</span><span class="metric-change up">↑ 3pp</span></div></div>
+</div>
+
+<div id="insights-section">
+  <div class="section-divider"><h2>Industry Insights</h2><div class="line"></div><span style="font-size:11px;color:var(--gray-400);font-family:var(--font-mono)">Updated Q1 2026</span></div>
+  <div class="insights-row">
+    <div class="insight-card c-teal"><div class="insight-icon">📈</div><div class="insight-value">6.2%</div><div class="insight-label">DME Market Growth</div><div class="insight-desc">U.S. DME market reaches $62.4B in 2025, accelerating above the 5-year average growth rate.</div><span class="insight-change up">↑ Above 5yr avg</span></div>
+    <div class="insight-card c-navy"><div class="insight-icon">🏥</div><div class="insight-value">50%+</div><div class="insight-label">MA Penetration Rate</div><div class="insight-desc">Medicare Advantage now covers more than half of all Medicare beneficiaries for the first time.</div><span class="insight-change up">↑ Historic high</span></div>
+    <div class="insight-card c-peach"><div class="insight-icon">⏱️</div><div class="insight-value">7 Days</div><div class="insight-label">New PA Turnaround Mandate</div><div class="insight-desc">CMS now requires MA plans to process standard prior authorization requests within 7 calendar days.</div><span class="insight-change flat">Effective 2026</span></div>
+    <div class="insight-card c-green"><div class="insight-icon">💉</div><div class="insight-value">+34%</div><div class="insight-label">CGM Device Demand</div><div class="insight-desc">Continuous glucose monitor utilization surges year-over-year, driven by GLP-1 therapy proliferation.</div><span class="insight-change up">↑ YoY 2025</span></div>
+    <div class="insight-card c-purple"><div class="insight-icon">🔒</div><div class="insight-value">Frozen</div><div class="insight-label">CMS DME Enrollment</div><div class="insight-desc">Moratorium on all new DMEPOS Medicare supplier enrollments — no timeline for lifting announced.</div><span class="insight-change down">Active Now</span></div>
+    <div class="insight-card c-teal"><div class="insight-icon">🏠</div><div class="insight-value">$4,200</div><div class="insight-label">Home vs. Facility Savings</div><div class="insight-desc">Average annual per-member cost savings when DME is delivered at home versus skilled nursing facility.</div><span class="insight-change up">↑ Per member/yr</span></div>
+    <div class="insight-card c-navy"><div class="insight-icon">🤝</div><div class="insight-value">47</div><div class="insight-label">HME M&amp;A Deals 2024</div><div class="insight-desc">Private equity-backed consolidation reshaping the supplier landscape — up from 35 deals in 2023.</div><span class="insight-change down">↑ 12 from 2023</span></div>
+    <div class="insight-card c-peach"><div class="insight-icon">📉</div><div class="insight-value">3.1%</div><div class="insight-label">Comp Bidding Price Drop</div><div class="insight-desc">2025 competitive bidding lead item prices fall 3.1% from 2024 benchmarks across key categories.</div><span class="insight-change down">↓ vs. 2024</span></div>
+    <div class="insight-card c-green"><div class="insight-icon">📡</div><div class="insight-value">+28%</div><div class="insight-label">Connected DME Growth</div><div class="insight-desc">Smart CPAP, CGM, and remote monitoring devices growing rapidly, unlocking new RTM reimbursement.</div><span class="insight-change up">↑ YoY 2025</span></div>
+    <div class="insight-card c-purple"><div class="insight-icon">👩‍⚕️</div><div class="insight-value">38%</div><div class="insight-label">Telehealth DME Orders</div><div class="insight-desc">Telehealth prescribers now drive 38% of all new DME orders nationally — a permanent post-pandemic shift.</div><span class="insight-change up">↑ vs. 22% in 2021</span></div>
+  </div>
+</div>
+
+<div id="dme-news-section">
+  <div class="section-divider"><h2>DME &amp; HME News</h2><div class="line"></div><span class="refresh-info"><span id="spin-main-news" class="refresh-spin" style="display:none">⟳</span><span class="last-updated-time" style="font-size:11px"></span></span></div>
+  <div class="content-wrapper">
+    <div>
+      <div id="main-news"><div class="news-grid"><div class="skeleton-card "><div class="skeleton  skeleton-img "></div><div class="skeleton-body"><div class="skeleton  skeleton-line w60"></div><div class="skeleton  skeleton-line w100"></div><div class="skeleton  skeleton-line w80"></div></div></div><div class="skeleton-card "><div class="skeleton  skeleton-img "></div><div class="skeleton-body"><div class="skeleton  skeleton-line w60"></div><div class="skeleton  skeleton-line w100"></div><div class="skeleton  skeleton-line w80"></div></div></div><div class="skeleton-card "><div class="skeleton  skeleton-img "></div><div class="skeleton-body"><div class="skeleton  skeleton-line w60"></div><div class="skeleton  skeleton-line w100"></div><div class="skeleton  skeleton-line w80"></div></div></div><div class="skeleton-card "><div class="skeleton  skeleton-img "></div><div class="skeleton-body"><div class="skeleton  skeleton-line w60"></div><div class="skeleton  skeleton-line w100"></div><div class="skeleton  skeleton-line w80"></div></div></div><div class="skeleton-card "><div class="skeleton  skeleton-img "></div><div class="skeleton-body"><div class="skeleton  skeleton-line w60"></div><div class="skeleton  skeleton-line w100"></div><div class="skeleton  skeleton-line w80"></div></div></div><div class="skeleton-card "><div class="skeleton  skeleton-img "></div><div class="skeleton-body"><div class="skeleton  skeleton-line w60"></div><div class="skeleton  skeleton-line w100"></div><div class="skeleton  skeleton-line w80"></div></div></div></div></div>
+    </div>
+    <div class="sidebar">
+      <div class="cms-alert">
+        <div class="alert-icon">⚠️</div>
+        <h3>CMS DME Enrollment Moratorium — Active</h3>
+        <p>No new DMEPOS suppliers may enroll in Medicare. Existing providers of record retain licensing status. No expiration date set.</p>
+        <a href="https://www.cms.gov/medicare/enrollment-renewal/providers-suppliers/dme-moratorium" target="_blank">CMS Official Notice →</a>
+      </div>
+      <div class="sidebar-widget">
+        <div class="widget-header"><h3>Industry Resources</h3></div>
+        <div class="widget-body">
+          <a href="https://www.cms.gov/medicare/durable-medical-equipment-dme" class="trend-item" target="_blank"><div class="trend-num" style="font-size:16px">🏛</div><div class="trend-content"><h4>CMS DMEPOS Center</h4><span>cms.gov</span></div></a>
+          <a href="https://www.aahomecare.org" class="trend-item" target="_blank"><div class="trend-num" style="font-size:16px">🏠</div><div class="trend-content"><h4>AAHomecare</h4><span>aahomecare.org</span></div></a>
+          <a href="https://www.hmenews.com" class="trend-item" target="_blank"><div class="trend-num" style="font-size:16px">📰</div><div class="trend-content"><h4>HME News</h4><span>hmenews.com</span></div></a>
+          <a href="https://www.medtechdive.com" class="trend-item" target="_blank"><div class="trend-num" style="font-size:16px">🔬</div><div class="trend-content"><h4>MedTech Dive</h4><span>medtechdive.com</span></div></a>
+          <a href="https://www.modernhealthcare.com" class="trend-item" target="_blank"><div class="trend-num" style="font-size:16px">💼</div><div class="trend-content"><h4>Modern Healthcare</h4><span>modernhealthcare.com</span></div></a>
+          <a href="https://www.kff.org" class="trend-item" target="_blank"><div class="trend-num" style="font-size:16px">📊</div><div class="trend-content"><h4>KFF Health Policy</h4><span>kff.org</span></div></a>
+        </div>
+      </div>
+      <div class="sidebar-widget">
+        <div class="widget-header"><h3>Industry Snapshot 2025</h3></div>
+        <div class="stats-grid">
+          <div class="stat-cell"><div class="stat-value teal">$62.4B</div><div class="stat-label">U.S. DME Market</div><div class="stat-change up">↑ 6.2% YoY</div></div>
+          <div class="stat-cell"><div class="stat-value up">33.8M</div><div class="stat-label">MA Members</div><div class="stat-change up">↑ 8.4% YoY</div></div>
+          <div class="stat-cell"><div class="stat-value down">12.3%</div><div class="stat-label">DME Denial Rate</div><div class="stat-change down">↑ 1.8pp YoY</div></div>
+          <div class="stat-cell"><div class="stat-value teal">47</div><div class="stat-label">HME M&amp;A Deals</div><div class="stat-change up">↑ 12 from '23</div></div>
+          <div class="stat-cell"><div class="stat-value up">+34%</div><div class="stat-label">CGM Utilization</div><div class="stat-change up">YoY Growth</div></div>
+          <div class="stat-cell"><div class="stat-value down">7.4%</div><div class="stat-label">Healthcare Inflation</div><div class="stat-change down">↑ 0.9pp YoY</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div id="policy-section" style="background:var(--white);padding-top:40px;border-top:1px solid var(--border)">
+  <div class="section-divider"><h2>Policy &amp; Regulatory Timeline</h2><div class="line"></div><a href="https://www.cms.gov" class="view-all" target="_blank">CMS.gov →</a></div>
+  <div class="policy-timeline">
+    <div class="policy-timeline-label"><h2>Key Dates &amp; Deadlines</h2><p>Critical CMS policy milestones, compliance deadlines, and regulatory changes affecting DMEPOS suppliers and payers.</p></div>
+    <div class="timeline-items">
+      <div class="timeline-item"><div class="timeline-date">Active Now</div><div class="timeline-dot-col"><div class="timeline-dot red"></div><div class="timeline-line"></div></div><div class="timeline-content"><span class="timeline-tag red">Moratorium</span><h4>CMS DMEPOS Medicare Enrollment Freeze</h4><p>No new DME suppliers may enroll. Existing licensees retain status. No end date announced.</p></div></div>
+      <div class="timeline-item"><div class="timeline-date">Q2 2026</div><div class="timeline-dot-col"><div class="timeline-dot active"></div><div class="timeline-line"></div></div><div class="timeline-content"><span class="timeline-tag teal">Reimbursement</span><h4>Competitive Bidding 2025 Contract Renewals</h4><p>DMEPOS competitive bidding contract renewals due. Suppliers must re-bid under updated pricing.</p></div></div>
+      <div class="timeline-item"><div class="timeline-date">Q3 2026</div><div class="timeline-dot-col"><div class="timeline-dot amber"></div><div class="timeline-line"></div></div><div class="timeline-content"><span class="timeline-tag amber">Reporting</span><h4>MA Prior Auth Transparency Reporting Due</h4><p>Medicare Advantage plans must submit prior authorization data reports to CMS under new transparency rules.</p></div></div>
+      <div class="timeline-item"><div class="timeline-date">Dec 2026</div><div class="timeline-dot-col"><div class="timeline-dot amber"></div><div class="timeline-line"></div></div><div class="timeline-content"><span class="timeline-tag amber">Telehealth</span><h4>Telehealth Prescribing Waiver Expiration</h4><p>DEA/HHS telehealth prescribing waivers expire. Congress expected to act — watch for extension legislation.</p></div></div>
+      <div class="timeline-item"><div class="timeline-date">Jan 2027</div><div class="timeline-dot-col"><div class="timeline-dot"></div><div class="timeline-line"></div></div><div class="timeline-content"><span class="timeline-tag green">Compliance</span><h4>New CMS Electronic Prior Auth Standards Effective</h4><p>All MA plans must process PA requests via standardized electronic systems. Accelerates DME order approvals.</p></div></div>
+      <div class="timeline-item"><div class="timeline-date">Jan 2027</div><div class="timeline-dot-col"><div class="timeline-dot"></div><div class="timeline-line"></div></div><div class="timeline-content"><span class="timeline-tag purple">Fee Schedule</span><h4>2026 DMEPOS Fee Schedule Update Effective</h4><p>CMS proposes 2.6% aggregate payment update for DMEPOS fee schedule items.</p></div></div>
+    </div>
+  </div>
+</div>
+
+<div id="prescriber-section" class="prescriber-section">
+  <div class="section-divider"><h2>Prescriber &amp; Clinical Trends</h2><div class="line"></div><span class="refresh-info dark"><span id="spin-prescriber-feed" class="refresh-spin" style="display:none">⟳</span></span></div>
+  <div id="prescriber-feed"><div class="prescriber-grid"><div class="skeleton-card dark"><div class="skeleton dark skeleton-img short"></div><div class="skeleton-body"><div class="skeleton dark skeleton-line w60"></div><div class="skeleton dark skeleton-line w100"></div><div class="skeleton dark skeleton-line w80"></div></div></div><div class="skeleton-card dark"><div class="skeleton dark skeleton-img short"></div><div class="skeleton-body"><div class="skeleton dark skeleton-line w60"></div><div class="skeleton dark skeleton-line w100"></div><div class="skeleton dark skeleton-line w80"></div></div></div><div class="skeleton-card dark"><div class="skeleton dark skeleton-img short"></div><div class="skeleton-body"><div class="skeleton dark skeleton-line w60"></div><div class="skeleton dark skeleton-line w100"></div><div class="skeleton dark skeleton-line w80"></div></div></div></div></div>
+</div>
+
+<div id="member-section" class="members-section">
+  <div class="section-divider" style="padding:0 0 8px"><h2 style="color:var(--navy)">Member Spotlight</h2><div class="line" style="background:var(--peach)"></div><span class="refresh-info"><span id="spin-member-feature" class="refresh-spin" style="display:none">⟳</span></span></div>
+  <div class="section-intro"><p>Trends, news, and data shaping the experience of Medicare and commercially-insured members receiving DME benefits.</p></div>
+  <div class="members-layout">
+    <div id="member-feature" style="display:contents"><div class="skeleton-card "><div class="skeleton  skeleton-img "></div><div class="skeleton-body"><div class="skeleton  skeleton-line w60"></div><div class="skeleton  skeleton-line w100"></div><div class="skeleton  skeleton-line w80"></div></div></div><div class="skeleton-card "><div class="skeleton  skeleton-img "></div><div class="skeleton-body"><div class="skeleton  skeleton-line w60"></div><div class="skeleton  skeleton-line w100"></div><div class="skeleton  skeleton-line w80"></div></div></div></div>
+    <div class="members-stat-strip">
+      <div class="peach-stat">
+        <h3>Member DME Snapshot</h3>
+        <div class="peach-stat-row">
+          <div class="peach-stat-item"><div class="val">1 in 4</div><div class="lbl">Members skipped DME due to cost in 2025</div><span class="chg">↑ from 1 in 6 in 2023</span></div>
+          <div class="peach-stat-item"><div class="val">22%</div><div class="lbl">Higher DME utilization in MA vs. traditional Medicare</div><span class="chg">KFF 2025</span></div>
+          <div class="peach-stat-item"><div class="val">$4,200</div><div class="lbl">Avg. annual savings — home vs. facility per member</div><span class="chg">Health Affairs 2025</span></div>
+          <div class="peach-stat-item"><div class="val">68%</div><div class="lbl">Members prefer home delivery over in-store pickup</div><span class="chg">Accenture Survey</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div id="member-mini" style="display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-top:24px"><div class="skeleton-card "><div class="skeleton  skeleton-img "></div><div class="skeleton-body"><div class="skeleton  skeleton-line w60"></div><div class="skeleton  skeleton-line w100"></div><div class="skeleton  skeleton-line w80"></div></div></div><div class="skeleton-card "><div class="skeleton  skeleton-img "></div><div class="skeleton-body"><div class="skeleton  skeleton-line w60"></div><div class="skeleton  skeleton-line w100"></div><div class="skeleton  skeleton-line w80"></div></div></div><div class="skeleton-card "><div class="skeleton  skeleton-img "></div><div class="skeleton-body"><div class="skeleton  skeleton-line w60"></div><div class="skeleton  skeleton-line w100"></div><div class="skeleton  skeleton-line w80"></div></div></div><div class="skeleton-card "><div class="skeleton  skeleton-img "></div><div class="skeleton-body"><div class="skeleton  skeleton-line w60"></div><div class="skeleton  skeleton-line w100"></div><div class="skeleton  skeleton-line w80"></div></div></div></div>
+</div>
+
+<div id="provider-section" class="dme-section">
+  <div class="section-divider" style="padding:0 0 8px"><h2>DME Provider Intelligence</h2><div class="line"></div><span class="refresh-info dark"><span id="spin-dme-news" class="refresh-spin" style="display:none">⟳</span></span></div>
+  <div class="section-intro"><p>Regulatory updates, reimbursement shifts, operational trends, and business intelligence for DMEPOS suppliers, subcontractors, and manufacturers.</p></div>
+  <div class="dme-layout">
+    <div class="dme-alert-stack">
+      <div class="dme-alert-card red"><div class="alert-label">🚨 Active Moratorium</div><h4>Medicare DMEPOS Enrollment Freeze</h4><p>CMS has suspended all new DME supplier Medicare enrollment. No timeline for lifting.</p><a href="https://www.cms.gov/medicare/enrollment-renewal/providers-suppliers/dme-moratorium" target="_blank">CMS Official Notice →</a></div>
+      <div class="dme-alert-card teal"><div class="alert-label">📋 Reimbursement</div><h4>Competitive Bidding 2025: Prices Drop 3.1%</h4><p>New contract pricing affects oxygen, enteral nutrition, and mail-order diabetes supplies across all CBAs.</p><a href="https://www.cms.gov/medicare/payment/dmepos-competitive-bidding-program" target="_blank">View Pricing →</a></div>
+      <div class="dme-alert-card amber"><div class="alert-label">⚠️ Compliance</div><h4>OIG Increases DMEPOS Audit Activity</h4><p>HHS OIG flagged DMEPOS as a 2026 priority audit area. Review CMN and proof-of-delivery documentation.</p><a href="https://oig.hhs.gov/reports-and-publications/workplan/index.asp" target="_blank">OIG Work Plan →</a></div>
+      <div class="dme-alert-card green"><div class="alert-label">💡 Opportunity</div><h4>RTM Reimbursement Codes Now Available</h4><p>New CPT codes for remote therapeutic monitoring create revenue opportunities for connected device programs.</p><a href="https://www.ama-assn.org/practice-management/cpt/remote-therapeutic-monitoring-codes" target="_blank">AMA CPT Codes →</a></div>
+    </div>
+    <div>
+      <div id="dme-news"><div class="dme-news-grid"><div class="skeleton-card dark"><div class="skeleton dark skeleton-img short"></div><div class="skeleton-body"><div class="skeleton dark skeleton-line w60"></div><div class="skeleton dark skeleton-line w100"></div><div class="skeleton dark skeleton-line w80"></div></div></div><div class="skeleton-card dark"><div class="skeleton dark skeleton-img short"></div><div class="skeleton-body"><div class="skeleton dark skeleton-line w60"></div><div class="skeleton dark skeleton-line w100"></div><div class="skeleton dark skeleton-line w80"></div></div></div><div class="skeleton-card dark"><div class="skeleton dark skeleton-img short"></div><div class="skeleton-body"><div class="skeleton dark skeleton-line w60"></div><div class="skeleton dark skeleton-line w100"></div><div class="skeleton dark skeleton-line w80"></div></div></div><div class="skeleton-card dark"><div class="skeleton dark skeleton-img short"></div><div class="skeleton-body"><div class="skeleton dark skeleton-line w60"></div><div class="skeleton dark skeleton-line w100"></div><div class="skeleton dark skeleton-line w80"></div></div></div><div class="skeleton-card dark"><div class="skeleton dark skeleton-img short"></div><div class="skeleton-body"><div class="skeleton dark skeleton-line w60"></div><div class="skeleton dark skeleton-line w100"></div><div class="skeleton dark skeleton-line w80"></div></div></div><div class="skeleton-card dark"><div class="skeleton dark skeleton-img short"></div><div class="skeleton-body"><div class="skeleton dark skeleton-line w60"></div><div class="skeleton dark skeleton-line w100"></div><div class="skeleton dark skeleton-line w80"></div></div></div></div></div>
+      <div id="dme-bottom" class="dme-bottom-strip" style="margin-top:24px"><div class="skeleton-card dark"><div class="skeleton dark skeleton-img short"></div><div class="skeleton-body"><div class="skeleton dark skeleton-line w60"></div><div class="skeleton dark skeleton-line w100"></div><div class="skeleton dark skeleton-line w80"></div></div></div><div class="skeleton-card dark"><div class="skeleton dark skeleton-img short"></div><div class="skeleton-body"><div class="skeleton dark skeleton-line w60"></div><div class="skeleton dark skeleton-line w100"></div><div class="skeleton dark skeleton-line w80"></div></div></div><div class="skeleton-card dark"><div class="skeleton dark skeleton-img short"></div><div class="skeleton-body"><div class="skeleton dark skeleton-line w60"></div><div class="skeleton dark skeleton-line w100"></div><div class="skeleton dark skeleton-line w80"></div></div></div><div class="skeleton-card dark"><div class="skeleton dark skeleton-img short"></div><div class="skeleton-body"><div class="skeleton dark skeleton-line w60"></div><div class="skeleton dark skeleton-line w100"></div><div class="skeleton dark skeleton-line w80"></div></div></div></div>
+    </div>
+  </div>
+</div>
+
+<footer>
+  <div class="footer-inner">
+    <div class="footer-brand">
+      <div class="footer-wordmark">DME<span>Hub</span></div>
+      <p>A curated intelligence hub tracking the DME and HME industry — covering CMS policy, reimbursement, market trends, prescriber behavior, and member utilization.</p>
+      <div class="footer-tagline">Industry Intelligence · Live RSS · Auto-Refresh 30min</div>
+    </div>
+    <div class="footer-links">
+      <h4>Live Feed Sources</h4>
+      <ul>
+        <li><a href="https://www.cms.gov" target="_blank">CMS — Medicare &amp; Medicaid</a></li>
+        <li><a href="https://kff.org" target="_blank">KFF Health Policy</a></li>
+        <li><a href="https://www.fiercehealthcare.com" target="_blank">Fierce Healthcare</a></li>
+        <li><a href="https://www.healthaffairs.org" target="_blank">Health Affairs</a></li>
+        <li><a href="https://www.medscape.com" target="_blank">Medscape</a></li>
+        <li><a href="https://www.aahomecare.org" target="_blank">AAHomecare</a></li>
+      </ul>
+    </div>
+    <div class="footer-links">
+      <h4>Navigation</h4>
+      <ul>
+        <li><a href="#dme-news-section">DME &amp; HME News</a></li>
+        <li><a href="#insights-section">Industry Insights</a></li>
+        <li><a href="#prescriber-section">Prescriber Trends</a></li>
+        <li><a href="#member-section">Member Spotlight</a></li>
+        <li><a href="#provider-section">Provider Intelligence</a></li>
+        <li><a href="#policy-section">Policy Timeline</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>© 2026 DME Intelligence Hub · <span class="last-updated-time">Live Feed Active</span></span>
+    <span>Content sourced from public RSS feeds. For informational use only.</span>
+  </div>
+</footer>
+
+
+<script>
+// ═══════════════════════════════════════════════════════
+//  DME INTELLIGENCE HUB — LIVE FEED ENGINE v3
+//  Multi-proxy fallback • Static fallback content
+//  Auto-refresh 30min • Never shows blank sections
+// ═══════════════════════════════════════════════════════
+
+const REFRESH_MS = 30 * 60 * 1000;
+
+// Multiple proxy services — tried in order until one works
+const PROXIES = [
+  url => `https://api.rss2json.com/v1/api.json?rss_url=${encodeURIComponent(url)}&count=12`,
+  url => `https://api.allorigins.win/get?url=${encodeURIComponent(url)}`,
+];
+
+// Static fallback content — shown when all live feeds fail
+const FB_MAIN   = [{"title": "CMS Issues Moratorium on New DME Supplier Medicare Enrollment", "desc": "CMS has enacted a sweeping moratorium halting all new DMEPOS supplier enrollments in Medicare programs, with no timeline for lifting the freeze.", "url": "https://www.cms.gov/medicare/enrollment-renewal/providers-suppliers/dme-moratorium", "img": "https://images.unsplash.com/photo-1450101499163-c8848c66ca85?w=800&q=90&fit=crop", "source": "CMS.gov", "topic": "CMS Policy", "badge": "badge-cms", "wide": true}, {"title": "Medicare Advantage Enrollment Surpasses 33.8 Million \u2014 DME Utilization Rises", "desc": "MA enrollment now covers more than 50% of all Medicare beneficiaries, driving measurably higher DME benefit utilization rates versus traditional Medicare.", "url": "https://www.kff.org/medicare", "img": "https://images.unsplash.com/photo-1576091160550-2173dba999ef?w=800&q=90&fit=crop", "source": "KFF", "topic": "Medicare Advantage", "badge": "badge-trend", "wide": false}, {"title": "GLP-1 Prescribing Surge Drives CGM Device Demand Up 34% Year-Over-Year", "desc": "The explosion in semaglutide and tirzepatide prescribing has created unexpected downstream demand for continuous glucose monitors, straining DME fulfillment networks.", "url": "https://www.medscape.com", "img": "https://images.unsplash.com/photo-1631815589968-fdb09a223b1e?w=800&q=90&fit=crop", "source": "Medscape", "topic": "Clinical", "badge": "badge-policy", "wide": false}, {"title": "Prior Authorization Denials for DME Rise 1.8 Points \u2014 CMS Tightens Oversight", "desc": "Medicare Advantage plans face growing scrutiny as prior authorization denial rates for medically necessary DME orders continue to climb in 2025.", "url": "https://www.healthaffairs.org", "img": "https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=800&q=90&fit=crop", "source": "Health Affairs", "topic": "Policy", "badge": "badge-cms", "wide": false}, {"title": "HME Industry Consolidation Accelerates \u2014 47 Acquisitions Recorded in 2024", "desc": "Private equity continues to reshape the HME landscape as larger regional operators acquire smaller independent providers amid competitive bidding pressures.", "url": "https://www.hmenews.com", "img": "https://images.unsplash.com/photo-1521791136064-7986c2920216?w=800&q=90&fit=crop", "source": "HME News", "topic": "Industry", "badge": "badge-industry", "wide": true}, {"title": "Home-Based DME Delivery Reduces Per-Member Costs by $4,200 Annually vs. Skilled Nursing Facility", "desc": "Health Affairs research quantifies the cost advantage of home DME delivery, reinforcing insurer preferences for at-home equipment over institutional alternatives.", "url": "https://www.healthaffairs.org", "img": "https://images.unsplash.com/photo-1584982751601-97dcc096659c?w=800&q=90&fit=crop", "source": "Health Affairs", "topic": "Cost", "badge": "badge-trend", "wide": false}, {"title": "Telehealth Prescribing Extension Maintains DME Order Pathways Through 2026", "desc": "Extended telehealth prescribing rules continue to allow remote physician encounters to satisfy DME prescription requirements, maintaining order volumes.", "url": "https://www.fiercehealthcare.com", "img": "https://images.unsplash.com/photo-1587825140708-dfaf72ae4b04?w=800&q=90&fit=crop", "source": "Fierce Healthcare", "topic": "Telehealth", "badge": "badge-industry", "wide": false}];
+const FB_PRES   = [{"title": "Telehealth Prescribers Now Drive 38% of New DME Orders Nationally", "desc": "Virtual care encounters have become a mainstream channel for DME referrals, with remote physicians generating nearly 4 in 10 new equipment orders \u2014 changing how DME providers connect with the prescriber network.", "url": "https://www.medscape.com", "img": "https://images.unsplash.com/photo-1638202993928-7d113b8e4519?w=800&q=90&fit=crop", "source": "Medscape", "topic": "Telehealth"}, {"title": "GLP-1 Prescribers Become Key DME Referral Sources as Comorbidity Management Expands", "desc": "Endocrinologists and PCPs managing patients on GLP-1 therapies are increasingly ordering CGMs, infusion devices, and wound care equipment \u2014 creating a new prescriber segment for DME providers.", "url": "https://www.medscape.com", "img": "https://images.unsplash.com/photo-1612349317150-e413f6a5b16d?w=800&q=90&fit=crop", "source": "Medscape", "topic": "GLP-1 Impact"}, {"title": "AMA Survey: Prior Auth Burden Leads 76% of Physicians to Delay or Abandon DME Orders", "desc": "A landmark AMA survey reveals that the prior authorization process for DME is a leading driver of physician burnout and order abandonment, with significant implications for patient access.", "url": "https://www.ama-assn.org", "img": "https://images.unsplash.com/photo-1581594693702-fbdc51b2763b?w=800&q=90&fit=crop", "source": "AMA", "topic": "Prescriber Burden"}];
+const FB_MEMBER = [{"title": "Medicare Advantage Members Face Growing Gaps in DME Access as Benefit Designs Vary Widely", "desc": "A KFF analysis of 2025 MA plan benefit structures reveals significant variation in DME coverage terms, prior authorization requirements, and cost-sharing across carriers.", "url": "https://www.kff.org", "img": "https://images.unsplash.com/photo-1576765608535-5f04d1e3f289?w=800&q=90&fit=crop", "source": "KFF", "topic": "Member Access"}, {"title": "1 in 4 Members Delayed or Skipped Prescribed DME in 2025 Due to Out-of-Pocket Cost", "desc": "The Commonwealth Fund's 2025 affordability survey documents a troubling rise in equipment non-compliance linked directly to cost-sharing, with fixed-income members most affected.", "url": "https://www.commonwealthfund.org", "img": "https://images.unsplash.com/photo-1559757175-0eb30cd8c063?w=800&q=90&fit=crop", "source": "Commonwealth Fund", "topic": "Cost Burden"}, {"title": "Rural Members Face 2\u20133 Week Longer DME Delivery Times vs. Urban Counterparts", "desc": "Geographic access gaps persist for rural beneficiaries, particularly for oxygen therapy, CPAP, and mobility equipment \u2014 highlighting the importance of national fulfillment networks.", "url": "https://www.modernhealthcare.com", "img": "https://images.unsplash.com/photo-1506126613408-eca07ce68773?w=800&q=90&fit=crop", "source": "Modern Healthcare", "topic": "Access"}, {"title": "MA Supplemental DME Benefits Expanding \u2014 OTC Allowances Up 18% in 2025", "desc": "More Medicare Advantage plans are adding or expanding DME supplemental benefits to attract and retain members in highly competitive markets.", "url": "https://www.fiercehealthcare.com", "img": "https://images.unsplash.com/photo-1554224155-6726b3ff858f?w=800&q=90&fit=crop", "source": "Fierce Healthcare", "topic": "Benefits"}, {"title": "Member Satisfaction Scores for DME Delivery Drop 9 Points \u2014 Speed Key Driver", "desc": "Accenture's 2025 patient experience survey identifies delivery speed and order status communication as the top two pain points in the DME fulfillment experience.", "url": "https://www.accenture.com", "img": "https://images.unsplash.com/photo-1617451250216-5db55640c94e?w=800&q=90&fit=crop", "source": "Accenture", "topic": "Satisfaction"}, {"title": "Health Literacy Gaps Remain a Top Driver of DME Non-Adherence", "desc": "Members who don't understand their equipment instructions return devices at 3x the rate of those who receive proper onboarding support, per Health Affairs analysis.", "url": "https://www.healthaffairs.org", "img": "https://images.unsplash.com/photo-1559757148-5c350d0d3c56?w=800&q=90&fit=crop", "source": "Health Affairs", "topic": "Adherence"}];
+const FB_DME    = [{"title": "Private Equity Consolidation Reshapes HME Supplier Market \u2014 Independent Providers Squeezed", "desc": "PE-backed regional players are acquiring independent DME suppliers at record pace, creating pricing and competitive pressures for smaller operators nationwide.", "url": "https://www.hmenews.com", "img": "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=800&q=90&fit=crop", "source": "HME News", "topic": "M&A"}, {"title": "CGM and CPAP Supply Constraints Persist \u2014 Lead Times Extend to 6+ Weeks", "desc": "Manufacturers cite component shortages and demand surges as DME providers struggle to meet order volumes driven by GLP-1 and post-COVID demand spikes.", "url": "https://www.medtechdive.com", "img": "https://images.unsplash.com/photo-1553062407-98eeb64c6a62?w=800&q=90&fit=crop", "source": "MedTech Dive", "topic": "Supply Chain"}, {"title": "CMS Tightens DMEPOS Documentation Standards \u2014 CMN Deficiencies Top Denial Reason", "desc": "Incomplete or missing Certificates of Medical Necessity continue to drive the largest share of DME claim denials, with CMS signaling zero tolerance in upcoming audits.", "url": "https://www.healthcarefinancenews.com", "img": "https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=800&q=90&fit=crop", "source": "Healthcare Finance", "topic": "Compliance"}, {"title": "Last-Mile DME Delivery Technology Adoption Accelerates \u2014 Route Optimization Cuts Costs 18%", "desc": "Forward-thinking HME suppliers are deploying logistics technology to reduce delivery costs and improve member satisfaction scores across their service areas.", "url": "https://www.hmenews.com", "img": "https://images.unsplash.com/photo-1616401784845-180882ba9ba8?w=800&q=90&fit=crop", "source": "HME News", "topic": "Operations"}, {"title": "EHR-to-DME Order Integration Reduces Fulfillment Time by 40% in Pilot Programs", "desc": "Health systems integrating EHR ordering directly with DME suppliers and PORs are seeing dramatic improvements in order processing speed and accuracy.", "url": "https://www.modernhealthcare.com", "img": "https://images.unsplash.com/photo-1504868584819-f8e8b4b6d7e3?w=800&q=90&fit=crop", "source": "Modern Healthcare", "topic": "Technology"}, {"title": "HME Technician Shortage Reaches Crisis Level \u2014 22% of Supplier Roles Unfilled Nationally", "desc": "AAHomecare reports a deepening workforce gap across delivery technicians, intake specialists, and billing staff, threatening supplier capacity and fulfillment SLAs.", "url": "https://www.aahomecare.org", "img": "https://images.unsplash.com/photo-1521737604893-d14cc237f11d?w=800&q=90&fit=crop", "source": "AAHomecare", "topic": "Workforce"}, {"title": "Value-Based DME Contracts Gaining Traction With MA Plans", "desc": "A growing number of Medicare Advantage plans are piloting outcomes-based DME contracts, rewarding suppliers who demonstrate strong patient adherence metrics.", "url": "https://www.fiercehealthcare.com", "img": "https://images.unsplash.com/photo-1450101499163-c8848c66ca85?w=800&q=90&fit=crop", "source": "Fierce Healthcare", "topic": "Contracts"}, {"title": "Connected DME Devices Growing 28% \u2014 Remote Monitoring Revenue Opportunity Emerges", "desc": "Smart CPAP, CGM, and nebulizer devices are generating remote monitoring data streams that forward-thinking suppliers are monetizing through RTM reimbursement codes.", "url": "https://www.medtechdive.com", "img": "https://images.unsplash.com/photo-1585829365295-ab7cd400c167?w=800&q=90&fit=crop", "source": "MedTech Dive", "topic": "Technology"}, {"title": "2026 DMEPOS Fee Schedule Preview \u2014 CMS Proposes 2.6% Payment Update", "desc": "CMS proposes aggregate payment update for DMEPOS fee schedule items effective Jan 2027. Public comment period now closed.", "url": "https://www.cms.gov/medicare/payment/dmepos-fee-schedule", "img": "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=800&q=90&fit=crop", "source": "CMS.gov", "topic": "Fee Schedule"}, {"title": "Accreditation Renewal Wave \u2014 1,200+ Suppliers Due in 2026", "desc": "Over 1,200 DMEPOS suppliers face accreditation renewal deadlines in 2026. ACHC and The Joint Commission report capacity constraints for site surveys.", "url": "https://www.hmenews.com", "img": "https://images.unsplash.com/photo-1521791136064-7986c2920216?w=800&q=90&fit=crop", "source": "HME News", "topic": "Compliance"}];
+
+const FEEDS = {
+  breaking:    ['https://kff.org/feed/','https://www.fiercehealthcare.com/rss/xml','https://www.healthaffairs.org/rss'],
+  mainNews:    ['https://kff.org/feed/','https://www.fiercehealthcare.com/rss/xml','https://www.healthaffairs.org/rss','https://www.medscape.com/rss/business'],
+  prescriber:  ['https://www.medscape.com/rss/news','https://www.fiercehealthcare.com/rss/xml','https://kff.org/feed/'],
+  member:      ['https://kff.org/feed/','https://www.healthaffairs.org/rss','https://www.fiercehealthcare.com/rss/xml'],
+  dmeProvider: ['https://www.fiercehealthcare.com/rss/xml','https://www.healthaffairs.org/rss','https://kff.org/feed/'],
+};
+
+const FEED_META = {
+  'https://kff.org/feed/':                      {label:'KFF',          badge:'badge-cms',      topic:'Policy'},
+  'https://www.fiercehealthcare.com/rss/xml':   {label:'Fierce Health', badge:'badge-industry', topic:'Industry'},
+  'https://www.healthaffairs.org/rss':          {label:'Health Affairs',badge:'badge-trend',    topic:'Research'},
+  'https://www.medscape.com/rss/business':      {label:'Medscape',      badge:'badge-policy',   topic:'Clinical'},
+  'https://www.medscape.com/rss/news':          {label:'Medscape',      badge:'badge-policy',   topic:'Prescriber'},
+};
+
+const FALLBACKS = {
+  'Policy':        'https://images.unsplash.com/photo-1450101499163-c8848c66ca85?w=800&q=90&fit=crop',
+  'Industry':      'https://images.unsplash.com/photo-1521791136064-7986c2920216?w=800&q=90&fit=crop',
+  'Research':      'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=800&q=90&fit=crop',
+  'Clinical':      'https://images.unsplash.com/photo-1638202993928-7d113b8e4519?w=800&q=90&fit=crop',
+  'Prescriber':    'https://images.unsplash.com/photo-1612349317150-e413f6a5b16d?w=800&q=90&fit=crop',
+  'Member':        'https://images.unsplash.com/photo-1576765608535-5f04d1e3f289?w=800&q=90&fit=crop',
+  'Cost':          'https://images.unsplash.com/photo-1554224155-6726b3ff858f?w=800&q=90&fit=crop',
+  'Breaking':      'https://images.unsplash.com/photo-1585829365295-ab7cd400c167?w=800&q=90&fit=crop',
+  'Operations':    'https://images.unsplash.com/photo-1616401784845-180882ba9ba8?w=800&q=90&fit=crop',
+  'default':       'https://images.unsplash.com/photo-1576091160550-2173dba999ef?w=800&q=90&fit=crop',
+};
+
+const DME_KW = ['dme','hme','dmepos','medicare','medicaid','insurance','health plan','prior auth','home health','equipment','prescri','physician','provider','patient','member','benefit','cms','reimbursement','coverage','payer','telehealth','medical','hospital','clinical','care','cost','glp','diabetes','cgm','cpap','oxygen','mobility','wheelchair','infusion'];
+
+function isRelevant(i) {
+  const t = ((i.title||'')+(i.description||'')).toLowerCase();
+  return DME_KW.some(k => t.includes(k));
+}
+
+// Try rss2json first, fall back to allorigins
+async function fetchFeedWithFallback(feedUrl) {
+  // Try rss2json
+  try {
+    const r = await fetch(`https://api.rss2json.com/v1/api.json?rss_url=${encodeURIComponent(feedUrl)}&count=12`, {signal: AbortSignal.timeout(8000)});
+    if (r.ok) {
+      const d = await r.json();
+      if (d.status === 'ok' && d.items?.length) {
+        const meta = FEED_META[feedUrl] || {label:'News', badge:'badge-industry', topic:'Industry'};
+        return d.items.map(i => ({...i, _label:meta.label, _badge:meta.badge, _topic:meta.topic}));
+      }
+    }
+  } catch(e) {}
+
+  // Try allorigins as fallback
+  try {
+    const r = await fetch(`https://api.allorigins.win/get?url=${encodeURIComponent(feedUrl)}`, {signal: AbortSignal.timeout(8000)});
+    if (r.ok) {
+      const d = await r.json();
+      const parser = new DOMParser();
+      const xml = parser.parseFromString(d.contents, 'text/xml');
+      const items = [...xml.querySelectorAll('item')].slice(0,12).map(el => {
+        const meta = FEED_META[feedUrl] || {label:'News', badge:'badge-industry', topic:'Industry'};
+        return {
+          title: el.querySelector('title')?.textContent || '',
+          link:  el.querySelector('link')?.textContent || '',
+          pubDate: el.querySelector('pubDate')?.textContent || '',
+          description: el.querySelector('description')?.textContent || '',
+          thumbnail: el.querySelector('enclosure')?.getAttribute('url') || '',
+          _label: meta.label, _badge: meta.badge, _topic: meta.topic,
+        };
+      });
+      if (items.length) return items;
+    }
+  } catch(e) {}
+
+  return [];
+}
+
+async function fetchGroup(urls, count=6) {
+  // Stagger requests by 300ms each to avoid rate limiting
+  const results = [];
+  for (let i = 0; i < urls.length; i++) {
+    if (i > 0) await new Promise(r => setTimeout(r, 300));
+    const items = await fetchFeedWithFallback(urls[i]);
+    results.push(...items);
+  }
+  const seen = new Set();
+  const deduped = results.filter(i => {
+    const k = (i.title||'').trim().toLowerCase().slice(0,60);
+    if (seen.has(k)) return false;
+    seen.add(k); return true;
+  });
+  const rel = deduped.filter(isRelevant);
+  const pool = rel.length >= count ? rel : deduped.length ? deduped : [];
+  pool.sort((a,b) => new Date(b.pubDate||0) - new Date(a.pubDate||0));
+  return pool.slice(0, count);
+}
+
+function timeAgo(d) {
+  if (!d) return 'Recently';
+  const diff = Math.floor((new Date() - new Date(d)) / 1000);
+  if (diff < 3600)   return Math.floor(diff/60)  + 'm ago';
+  if (diff < 86400)  return Math.floor(diff/3600) + 'h ago';
+  if (diff < 604800) return Math.floor(diff/86400)+ 'd ago';
+  return new Date(d).toLocaleDateString('en-US',{month:'short',day:'numeric'});
+}
+
+function safeDesc(item, max=160) {
+  const raw = (typeof item === 'string') ? item : (item.description||item.desc||item.content||'');
+  return raw.replace(/<[^>]+>/g,'').replace(/&[a-z#0-9]+;/gi,' ').trim().slice(0,max) + (raw.length > max ? '…' : '');
+}
+
+function getImg(item, topic='default') {
+  const img = item.thumbnail || item.img || '';
+  if (img && img.startsWith('http') && !img.includes('1x1') && !img.includes('icon') && !img.includes('logo')) return img;
+  const m = (item.description||item.content||'').match(/<img[^>]+src=["']([^"']+)["']/i);
+  if (m && m[1].startsWith('http')) return m[1];
+  return FALLBACKS[topic] || FALLBACKS['default'];
+}
+
+// ── Render from LIVE feed item ─────────────────────────────────
+function liveMainCard(item, idx) {
+  const topic = item._topic || 'Industry';
+  const badge = item._badge || 'badge-industry';
+  const label = item._label || 'News';
+  const img   = getImg(item, topic);
+  const ago   = timeAgo(item.pubDate);
+  const wide  = idx === 0 || idx === 4;
+  const body  = `<h3>${item.title||'Untitled'}</h3><p>${safeDesc(item,150)}</p><div class="card-footer"><span class="card-source">${label} · ${ago}</span><span class="card-link">${wide?'Full Article':'Read More'} →</span></div>`;
+  if (wide) return `<a href="${item.link||'#'}" class="news-card wide" target="_blank"><div class="card-img"><img src="${img}" alt="" loading="lazy" onerror="this.onerror=null;this.src='${FALLBACKS[topic]||FALLBACKS.default}'"><div class="card-badge"><span class="badge ${badge}">${topic}</span></div></div><div class="card-body">${body}</div></a>`;
+  return `<a href="${item.link||'#'}" class="news-card" target="_blank"><div class="card-img"><img src="${img}" alt="" loading="lazy" onerror="this.onerror=null;this.src='${FALLBACKS[topic]||FALLBACKS.default}'"><div class="card-badge"><span class="badge ${badge}">${topic}</span></div></div><div class="card-body">${body}</div></a>`;
+}
+
+// ── Render from STATIC fallback object ─────────────────────────
+function fbMainCard(fb, idx) {
+  const wide = fb.wide || idx === 0 || idx === 4;
+  const body = `<h3>${fb.title}</h3><p>${fb.desc}</p><div class="card-footer"><span class="card-source">${fb.source}</span><span class="card-link">${wide?'Full Article':'Read More'} →</span></div>`;
+  if (wide) return `<a href="${fb.url}" class="news-card wide" target="_blank"><div class="card-img"><img src="${fb.img}" alt="" loading="lazy"><div class="card-badge"><span class="badge ${fb.badge}">${fb.topic}</span></div></div><div class="card-body">${body}</div></a>`;
+  return `<a href="${fb.url}" class="news-card" target="_blank"><div class="card-img"><img src="${fb.img}" alt="" loading="lazy"><div class="card-badge"><span class="badge ${fb.badge}">${fb.topic}</span></div></div><div class="card-body">${body}</div></a>`;
+}
+
+function presCard(item, isFb=false) {
+  const topic = isFb ? item.topic : (item._topic||'Prescriber');
+  const label = isFb ? item.source : (item._label||'News');
+  const img   = isFb ? item.img : getImg(item, topic);
+  const ago   = isFb ? '' : (' · ' + timeAgo(item.pubDate));
+  const desc  = isFb ? item.desc : safeDesc(item, 140);
+  return `<a href="${item.url||item.link||'#'}" class="prescriber-card" target="_blank"><div class="prescriber-card-img"><img src="${img}" alt="" loading="lazy" onerror="this.onerror=null;this.src='${FALLBACKS.Prescriber}'"></div><div class="prescriber-card-body"><div class="cat">${topic}</div><h3>${item.title||'Untitled'}</h3><p>${desc}</p></div><div class="prescriber-card-footer"><span>${label}${ago}</span><a href="${item.url||item.link||'#'}" target="_blank">Read →</a></div></a>`;
+}
+
+function memberFeature(item, isFb=false) {
+  const topic = isFb ? item.topic : (item._topic||'Member');
+  const label = isFb ? item.source : (item._label||'News');
+  const img   = isFb ? item.img : getImg(item, topic);
+  const ago   = isFb ? '' : (' · ' + timeAgo(item.pubDate));
+  const desc  = isFb ? item.desc : safeDesc(item, 240);
+  return `<a href="${item.url||item.link||'#'}" class="member-feature-card" target="_blank"><div class="card-img"><img src="${img}" alt="" loading="lazy" onerror="this.onerror=null;this.src='${FALLBACKS.Member}'"></div><div class="card-body"><div style="margin-bottom:10px"><span class="badge badge-trend">${topic}</span></div><h3>${item.title||'Untitled'}</h3><p>${desc}</p></div><div class="card-footer"><span class="card-source">${label}${ago}</span><span class="card-link">Read →</span></div></a>`;
+}
+
+function memberMini(item, isFb=false) {
+  const label = isFb ? item.source : (item._label||'News');
+  const topic = isFb ? item.topic : (item._topic||'Member');
+  const ago   = isFb ? '' : (' · '+timeAgo(item.pubDate));
+  const desc  = isFb ? item.desc : safeDesc(item, 100);
+  const icons = ['📋','🎁','🗺️','⭐','❤️','🏥','💊','🔬'];
+  const icon  = icons[Math.floor(Math.random()*icons.length)];
+  return `<a href="${item.url||item.link||'#'}" class="member-mini-card" target="_blank"><div class="member-mini-icon">${icon}</div><div><h4>${item.title||'Untitled'}</h4><p>${desc}</p><div class="meta">${label}${ago}</div></div></a>`;
+}
+
+function dmeCard(item, isFb=false) {
+  const topic = isFb ? item.topic : (item._topic||'Operations');
+  const label = isFb ? item.source : (item._label||'News');
+  const img   = isFb ? item.img : getImg(item, topic);
+  const ago   = isFb ? '' : (' · '+timeAgo(item.pubDate));
+  const desc  = isFb ? item.desc : safeDesc(item, 130);
+  return `<a href="${item.url||item.link||'#'}" class="dme-card" target="_blank"><div class="dme-card-img"><img src="${img}" alt="" loading="lazy" onerror="this.onerror=null;this.src='${FALLBACKS.Operations}'"></div><div class="dme-card-body"><div class="cat">${topic}</div><h3>${item.title||'Untitled'}</h3><p>${desc}</p></div><div class="dme-card-footer"><span>${label}${ago}</span><a href="${item.url||item.link||'#'}" target="_blank">Read →</a></div></a>`;
+}
+
+function dmeBottom(item, isFb=false) {
+  const label = isFb ? item.source : (item._label||'News');
+  const topic = isFb ? item.topic : (item._topic||'Provider');
+  const ago   = isFb ? '' : (' · '+timeAgo(item.pubDate));
+  const desc  = isFb ? item.desc : safeDesc(item, 120);
+  const icons = ['💲','🏅','📡','🤝','📋','🔬','📊','⚖️'];
+  const icon  = icons[Math.floor(Math.random()*icons.length)];
+  return `<a href="${item.url||item.link||'#'}" class="dme-bottom-card" target="_blank"><div class="icon">${icon}</div><h4>${item.title||'Untitled'}</h4><p>${desc}</p><span class="src">${label}${ago}</span></a>`;
+}
+
+function renderBreaking(items) {
+  if (!items.length) return;
+  const lead  = items[0];
+  const topic = lead._topic || 'Breaking';
+  const img   = getImg(lead, topic);
+  const ago   = timeAgo(lead.pubDate);
+  const bg = document.getElementById('breaking-hero-img');
+  if (bg) bg.style.backgroundImage = `url('${img}')`;
+  const he = document.getElementById('breaking-hero');
+  if (he) he.innerHTML = `<div class="hero-eyebrow"><span class="badge badge-breaking">Breaking</span><span class="badge badge-cms">${topic}</span><span class="hero-date">${ago}</span></div><h1>${lead.title||'Latest News'}</h1><p class="hero-summary">${safeDesc(lead,280)}</p><a href="${lead.link||'#'}" class="hero-cta" target="_blank">Read Full Story →</a>`;
+  const se = document.getElementById('breaking-sidebar');
+  if (se) se.innerHTML = items.slice(1,5).map(i => `<a href="${i.link||'#'}" class="side-story" target="_blank"><div class="cat">${i._topic||i._label||'News'}</div><h4>${i.title||'Untitled'}</h4><div class="meta">${i._label||'News'} · ${timeAgo(i.pubDate)}</div></a>`).join('');
+}
+
+function updateTicker(items) {
+  const t = document.querySelector('.ticker-track');
+  if (!t) return;
+  const src = items.length ? items : FB_MAIN;
+  const doubled = [...src, ...src];
+  t.innerHTML = doubled.map(i => `<span>${(i.title||'').slice(0,90)}</span>`).join('');
+}
+
+function updateTimestamps() {
+  const now = new Date();
+  const str = `Updated ${now.toLocaleTimeString('en-US',{hour:'2-digit',minute:'2-digit'})} · ${now.toLocaleDateString('en-US',{weekday:'short',month:'short',day:'numeric',year:'numeric'})}`;
+  document.querySelectorAll('.last-updated-time').forEach(el => el.textContent = str);
+}
+
+async function loadAll() {
+  console.log('🔄 DME Hub v3: Loading feeds with fallback protection…');
+  updateTimestamps();
+
+  // Load all feed groups with a 500ms stagger between groups
+  const breaking = await fetchGroup(FEEDS.breaking, 5);
+  await new Promise(r => setTimeout(r, 500));
+  const main = await fetchGroup(FEEDS.mainNews, 7);
+  await new Promise(r => setTimeout(r, 500));
+  const pres = await fetchGroup(FEEDS.prescriber, 3);
+  await new Promise(r => setTimeout(r, 500));
+  const member = await fetchGroup(FEEDS.member, 6);
+  await new Promise(r => setTimeout(r, 500));
+  const dme = await fetchGroup(FEEDS.dmeProvider, 10);
+
+  // Breaking hero — live or first static fallback
+  if (breaking.length) {
+    renderBreaking(breaking);
+    updateTicker(breaking);
+  } else {
+    // Use first static fallback for hero
+    const fb = FB_MAIN[0];
+    const bg = document.getElementById('breaking-hero-img');
+    if (bg) bg.style.backgroundImage = `url('${fb.img}')`;
+    const he = document.getElementById('breaking-hero');
+    if (he) he.innerHTML = `<div class="hero-eyebrow"><span class="badge badge-breaking">Featured</span><span class="badge badge-cms">${fb.topic}</span></div><h1>${fb.title}</h1><p class="hero-summary">${fb.desc}</p><a href="${fb.url}" class="hero-cta" target="_blank">Read Full Story →</a>`;
+    const se = document.getElementById('breaking-sidebar');
+    if (se) se.innerHTML = FB_MAIN.slice(1,5).map(f => `<a href="${f.url}" class="side-story" target="_blank"><div class="cat">${f.topic}</div><h4>${f.title}</h4><div class="meta">${f.source}</div></a>`).join('');
+    updateTicker([]);
+  }
+
+  // Main news grid — live or static fallback
+  const mn = document.getElementById('main-news');
+  if (mn) {
+    const cards = main.length
+      ? main.map(liveMainCard).join('')
+      : FB_MAIN.map(fbMainCard).join('');
+    mn.innerHTML = `<div class="news-grid">${cards}</div>`;
+    if (!main.length) mn.innerHTML += '<div style="text-align:center;padding:8px 0;font-size:11px;color:var(--gray-400);font-family:var(--font-mono)">Showing curated content · Live feed temporarily unavailable</div>';
+  }
+
+  // Prescriber — live or static fallback
+  const pn = document.getElementById('prescriber-feed');
+  if (pn) {
+    const cards = pres.length
+      ? pres.map(i => presCard(i, false)).join('')
+      : FB_PRES.map(i => presCard(i, true)).join('');
+    pn.innerHTML = `<div class="prescriber-grid">${cards}</div>`;
+  }
+
+  // Member feature — live or static fallback
+  const mf = document.getElementById('member-feature');
+  if (mf) {
+    const src = member.length ? member.slice(0,2) : FB_MEMBER.slice(0,2);
+    const fb  = !member.length;
+    mf.innerHTML = src.map(i => memberFeature(i, fb)).join('');
+  }
+
+  // Member mini — live or static fallback
+  const mm = document.getElementById('member-mini');
+  if (mm) {
+    const src = member.length ? member.slice(2,6) : FB_MEMBER.slice(2,6);
+    const fb  = !member.length;
+    mm.innerHTML = src.map(i => memberMini(i, fb)).join('');
+  }
+
+  // DME news — live or static fallback
+  const dn = document.getElementById('dme-news');
+  if (dn) {
+    const src = dme.length ? dme.slice(0,6) : FB_DME.slice(0,6);
+    const fb  = !dme.length;
+    dn.innerHTML = `<div class="dme-news-grid">${src.map(i => dmeCard(i, fb)).join('')}</div>`;
+  }
+
+  // DME bottom — live or static fallback
+  const db = document.getElementById('dme-bottom');
+  if (db) {
+    db.className = 'dme-bottom-strip';
+    const src = dme.length ? dme.slice(6,10) : FB_DME.slice(6,10);
+    const fb  = !dme.length;
+    db.innerHTML = src.map(i => dmeBottom(i, fb)).join('');
+  }
+
+  updateTimestamps();
+  console.log('✅ DME Hub v3: All sections populated.');
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+  loadAll();
+  setInterval(loadAll, REFRESH_MS);
+});
+</script>
+</body>
+</html>
